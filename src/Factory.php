@@ -17,7 +17,7 @@ class Factory implements Contracts\Factory
 
     public function __construct(FactoryInterface $delegate)
     {
-        $this->factory = $delegate;
+        $this->delegate = $delegate;
     }
 
     /**
@@ -41,8 +41,9 @@ class Factory implements Contracts\Factory
     {
         try 
         {
-            $service = $this->factory->make($service, $params);
+            $service = $this->delegate->make($service, $params);
         }
+        
         catch (\Throwable $e)
         {
             FactoryException::fromPrevios($e)->throw();
