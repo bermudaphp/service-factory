@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Lobster\Factory\Contracts;
+namespace Lobster\Contracts;
 
 
 /**
  * Interface Factory
- * @package Lobster\Factory
+ * @package Lobster
  */
 interface Factory
 {
@@ -14,7 +14,15 @@ interface Factory
      * @param string $service
      * @param array $params
      * @return object
-     * @throws FactoryException
+     * @throws Lobster\FactoryException
      */
-    public function __invoke(string $service, array $params = []) : object ;
+    public function make(string $service, array $params = []): object ;
+    
+    /**
+     * @param string $service
+     * @param array $params
+     * @return object
+     * @throws Lobster\FactoryException
+     */
+    public function __invoke(string $service, array $params = []): object ;
 }
