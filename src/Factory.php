@@ -1,44 +1,51 @@
 <?php
 
 
-namespace Lobster\Factory;
+namespace Lobster;
 
 
 use DI\FactoryInterface;
-use Lobster\Factory\Contracts\FactoryException;
 
 
 /**
  * Class Factory
- * @package Lobster\Factory
+ * @package Lobster
  */
 class Factory implements Contracts\Factory
 {
-    private FactoryInterface $factory;
+    private FactoryInterface $delegate;
 
-    /**
-     * Factory constructor.
-     * @param FactoryInterface $factory
-     */
-    public function __construct(FactoryInterface $factory)
+    public function __construct(FactoryInterface $delegate)
     {
-        $this->factory = $factory;
+        $this->factory = $delegate;
     }
 
     /**
      * @param string $service
      * @param array $params
      * @return object
-     * @throws \Lobster\Factory\FactoryException
+     * @throws FactoryException
      */
     public function __invoke(string $service, array $params = []): object
     {
-        try {
+        return $this->make($service, $params);
+    }
+    
+    /**
+     * @param string $service
+     * @param array $params
+     * @return object
+     * @throws FactoryException
+     */
+    public function make(string $service, array $params = []): object
+    {
+        try 
+        {
             $service = $this->factory->make($service, $params);
         }
         catch (\Throwable $e)
         {
-            throw FactoryException::fromPrev($e);
+            FactoryException::fromPrevios($e)->throw();
         }
 
         return $service;
