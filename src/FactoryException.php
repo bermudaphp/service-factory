@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Lobster;
+namespace Bermuda\ServiceFactory;
 
 
 /**
  * Class FactoryException
- * @package Lobster
+ * @package Bermuda\ServiceFactory
  */
 class FactoryException extends \RuntimeException
 {
@@ -14,9 +14,14 @@ class FactoryException extends \RuntimeException
      * @param \Throwable $e
      * @return static
      */
-    public static function fromPrevios(\Throwable $e) : self
+    public static function fromPrevios(\Throwable $e): self
     {
-        return new static($e->getMessage(), $e->getCode(), $e);
+        $self = static($e->getMessage(), $e->getCode(), $e);
+        
+        $self->file = $e->getFile();
+        $self->line = $e->getLine();
+        
+        return $self
     }
     
     /**
