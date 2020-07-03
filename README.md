@@ -1,4 +1,4 @@
 # Install
 ```bash
-composer require bermudaphp/factory
+composer require bermudaphp/service-factory
 ```
