@@ -1,21 +1,18 @@
 <?php
 
 
-namespace Lobster;
-
-
-use DI\FactoryInterface;
+namespace Bermuda\ServiceFactory;
 
 
 /**
  * Class Factory
- * @package Lobster
+ * @package Bermuda\ServiceFactory
  */
-class Factory implements Contracts\Factory
+class Factory implements FactoryInterface
 {
-    private FactoryInterface $delegate;
+    private \DI\FactoryInterface $delegate;
 
-    public function __construct(FactoryInterface $delegate)
+    public function __construct(\DI\FactoryInterface $delegate)
     {
         $this->delegate = $delegate;
     }
