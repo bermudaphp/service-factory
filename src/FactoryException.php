@@ -16,7 +16,7 @@ class FactoryException extends \RuntimeException
      */
     public static function fromPrevios(\Throwable $e): self
     {
-        $self = static($e->getMessage(), $e->getCode(), $e);
+        $self = new static($e->getMessage(), $e->getCode(), $e);
         
         $self->file = $e->getFile();
         $self->line = $e->getLine();
