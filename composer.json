@@ -1,14 +1,13 @@
 {
-    "name": "lobster-php/factory",
+    "name": "bermudaphp/service-factory",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Lobster\\": "src/",
-            "Lobster\\Contracts\\": "src/contracts"
+            "Bermuda\ServiceFactory\\": "src/"
         }
     },
     "require": {
-        "php": ">= 7.4.0",
+        "php": ">= 7.4",
         "php-di/php-di": "^6.1.0"
     }
 }
