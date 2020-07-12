@@ -8,6 +8,7 @@
     },
     "require": {
         "php": ">= 7.4",
-        "php-di/php-di": "^6.1.0"
+        "php-di/php-di": "^6.1.0",
+        "bermudaphp/pipeline": "^1.0"
     }
 }
