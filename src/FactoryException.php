@@ -14,14 +14,14 @@ class FactoryException extends \RuntimeException
      * @param \Throwable $e
      * @return static
      */
-    public static function fromPrevios(\Throwable $e): self
+    public static function fromPrevious(\Throwable $e): self
     {
         $self = new static($e->getMessage(), $e->getCode(), $e);
         
         $self->file = $e->getFile();
         $self->line = $e->getLine();
         
-        return $self
+        return $self;
     }
     
     /**
