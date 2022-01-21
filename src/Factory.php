@@ -30,11 +30,9 @@ class Factory implements FactoryInterface
     public function make(string $service, array $params = []): object
     {
         try {
-            $service = $this->delegate->make($service, $params);
+            return $this->delegate->make($service, $params);
         } catch (\Throwable $e) {
-            FactoryException::fromPrevios($e)->throw();
+            throw FactoryException::fromPrevios($e);
         }
-
-        return $service;
     }
 }
